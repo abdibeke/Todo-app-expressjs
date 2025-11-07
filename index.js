@@ -43,6 +43,25 @@ app.get("/", (req, res, next) => {
   }
 });
 
+// ---------------------- ADD TODO PAGE ROUTE ----------------------
+
+// Route: GET /add-todo
+// Purpose: Display a form to add a new Todo item
+// When the user goes to http://localhost:8000/add-todo
+// the server will render a page called "newTodo.ejs" (your add form)
+app.get("/add-todo", (req, res, next) => {
+  try {
+    // Render the 'newTodo.ejs' file (create this inside your 'views' folder)
+    // This page will contain a form for adding a new Todo
+    res.render("newTodo");
+  } catch (err) {
+    // Handle any error that occurs while rendering the page
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// -----------------------------------------------------------------
+
 // Start the server and make it listen on the defined port (8000)
 // The callback function runs after the server starts successfully.
 app.listen(PORT, () => {

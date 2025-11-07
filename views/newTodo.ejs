@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo app</title>
+  </head>
+  <body>
+    <!-- Container for the Add Todo form -->
+    <div class="table-container">
+      <!-- Page title -->
+      <h2 class="todo-title">Add Todo</h2>
+
+      <div>
+        <!-- "Back" button to return to the main todo list page -->
+        <!-- When clicked, it should go back to the home route ("/") -->
+        <a class="btn" href="/">Back</a>
+
+        <!-- Todo form -->
+        <!-- action="/add-todo"  => This is where the form data will be sent -->
+        <!-- method="POST"       => Means the data will be sent securely to the server -->
+        <form action="/add-todo" method="POST">
+          <div class="new-todo">
+            <div class="form-group">
+              <!-- Title input field -->
+              <label for="title" class="text-light">Title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Type todo here"
+                required
+              />
+
+              <!-- Description input field -->
+              <div class="form-group">
+                <label for="description" class="text-light">Description</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="desc"
+                  placeholder="Type description here"
+                  required
+                />
+              </div>
+
+              <!-- Submit button -->
+              <!-- When clicked, it will send form data to your server -->
+              <div class="form-group">
+                <button type="submit" class="btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
