@@ -2,6 +2,11 @@
 // Express is a popular Node.js framework used to build web servers easily.
 const express = require("express");
 
+// Import Mongoose
+// Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js
+// It makes it easier to work with MongoDB by providing a schema-based solution to model your data.
+const mongoose = require("mongoose");
+
 // Define the port number where the server will run
 // You can access your app in the browser at http://localhost:8000
 const PORT = 8000;
@@ -9,6 +14,17 @@ const PORT = 8000;
 // Initialize (create) an Express application
 // 'app' represents your entire web application.
 const app = express();
+
+// MongoDB connection URL
+// Format: mongodb://<host>:<port>/<database-name>
+// Here, we are connecting to a local MongoDB server with a database called 'todoDb'
+const connectionUrl = "mongodb://localhost:27017/todoDb";
+
+// Connect to MongoDB using Mongoose
+mongoose
+  .connect(connectionUrl)
+  .then(() => console.log("🟢 Database Connection Successful"))
+  .catch((err) => console.log("🔴 Database Connection Error:", err.message));
 
 // Set the view engine to 'ejs'
 // EJS (Embedded JavaScript) allows you to create dynamic HTML pages
