@@ -31,6 +31,18 @@ mongoose
 // Example: You can send data from your server and display it in HTML easily.
 app.set("view engine", "ejs");
 
+// Define a route for the home page "/"
+// When a user visits http://localhost:8000/, this function runs
+app.get("/", (req, res, next) => {
+  try {
+    // Render the 'index.ejs' file located in the 'views' folder
+    res.render("index");
+  } catch (err) {
+    // If something goes wrong, return a JSON response with the error message
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Start the server and make it listen on the defined port (8000)
 // The callback function runs after the server starts successfully.
 app.listen(PORT, () => {
