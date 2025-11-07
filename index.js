@@ -75,6 +75,21 @@ app.get("/update-todo", (req, res, next) => {
   }
 });
 
+// ---------------------- DELETE TODO PAGE ROUTE ----------------------
+// Route: GET /delete-todo
+// Purpose: Display a page to delete an existing Todo item
+// When the user goes to http://localhost:8000/delete-todo,
+// the server will render the "deleteTodo.ejs" page
+app.get("/delete-todo", (req, res, next) => {
+  try {
+    // Render the 'deleteTodo.ejs' file (create this inside your 'views' folder)
+    res.render("deleteTodo");
+  } catch (err) {
+    // Handle any error that occurs while rendering the page
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // -----------------------------------------------------------------
 
 // Start the server and make it listen on the defined port (8000)
