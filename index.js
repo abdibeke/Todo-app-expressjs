@@ -60,6 +60,21 @@ app.get("/add-todo", (req, res, next) => {
   }
 });
 
+// ---------------------- UPDATE TODO PAGE ROUTE ----------------------
+// Route: GET /update-todo
+// Purpose: Display a form to update (edit) an existing Todo item
+// When the user goes to http://localhost:8000/update-todo,
+// the server will render the "updateTodo.ejs" page (the update form)
+app.get("/update-todo", (req, res, next) => {
+  try {
+    // Render the 'updateTodo.ejs' file (create this inside your 'views' folder)
+    res.render("updateTodo");
+  } catch (err) {
+    // Handle any error that occurs while rendering the page
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // -----------------------------------------------------------------
 
 // Start the server and make it listen on the defined port (8000)

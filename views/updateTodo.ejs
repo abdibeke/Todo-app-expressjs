@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo app</title>
+  </head>
+  <body>
+    <!-- Page container -->
+    <div class="table-container">
+      <!-- Page title -->
+      <h2 class="todo-title">Update Todo</h2>
+
+      <div>
+        <!-- Back button to return to the main Todo list page -->
+        <a class="btn" href="">Back</a>
+
+        <!-- 
+          Update Todo form 
+          This form allows the user to edit an existing Todo item.
+          You can fill in the existing title and description values to be updated.
+        -->
+        <form action="" method="">
+          <div class="update-todo">
+            <!-- Title input field -->
+            <div class="form-group">
+              <label for="title" class="text-light">Title</label>
+              <input
+                type="text"
+                name="title"
+                value=""
+                placeholder="Type todo here"
+              />
+
+              <!-- Description input field -->
+              <div class="form-group">
+                <label for="description" class="text-light">Description</label>
+                <input
+                  type="text"
+                  name="desc"
+                  value=""
+                  placeholder="Type description here"
+                />
+              </div>
+
+              <!-- Save button to update the Todo -->
+              <div class="form-group">
+                <button type="submit" class="btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
