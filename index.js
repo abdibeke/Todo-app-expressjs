@@ -7,6 +7,10 @@ const express = require("express");
 // It makes it easier to work with MongoDB by providing a schema-based solution to model your data.
 const mongoose = require("mongoose");
 
+// Import path module
+// 'path' helps work with file paths in a way that works across all operating systems
+const path = require("path");
+
 // Define the port number where the server will run
 // You can access your app in the browser at http://localhost:8000
 const PORT = 8000;
@@ -30,6 +34,11 @@ mongoose
 // EJS (Embedded JavaScript) allows you to create dynamic HTML pages
 // Example: You can send data from your server and display it in HTML easily.
 app.set("view engine", "ejs");
+
+// Serve static files (CSS, JS, images) from the "public" folder
+// Any file inside 'public' can be accessed directly from the browser
+// Example: public/css/style.css can be used in HTML as <link rel="stylesheet" href="css/style.css">
+app.use(express.static(path.join(__dirname, "public")));
 
 // Define a route for the home page "/"
 // When a user visits http://localhost:8000/, this function runs

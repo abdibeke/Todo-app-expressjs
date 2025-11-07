@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo app</title>
-    <!-- You can add CSS files or Tailwind/Bootstrap here for styling -->
+
+    <!-- Link to external CSS file for styling -->
+    <!-- This file is in 'public/css/style.css' because Express serves the 'public' folder as static -->
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- Container for the heading and Add Todo button -->
@@ -13,8 +16,8 @@
       <h2 class="todo-title">Todo List</h2>
 
       <!-- Button for adding a new todo -->
-      <!-- You can later change href="" to point to a form page for adding todos -->
-      <div class="btn" href="">Add Todo</div>
+
+      <a class="btn" href="/add-todo">Add Todo</a>
     </div>
     <br />
 
@@ -36,8 +39,8 @@
       <td>Updated time</td>
       <td>
         <!-- Action buttons -->
-        <a class="btn" href="">Edit</a>
-        <a class="btn" href="">Delete</a>
+        <a class="btn" href="/update-todo">Edit</a>
+        <a class="btn" href="/delete-todo">Delete</a>
       </td>
     </table>
   </body>
