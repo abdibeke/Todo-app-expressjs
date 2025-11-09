@@ -31,6 +31,28 @@ mongoose
   .then(() => console.log("🟢 Database Connection Successful"))
   .catch((err) => console.log("🔴 Database Connection Error:", err.message));
 
+// ---------------------- TODO MODEL SCHEMA ----------------------
+
+// Define a Mongoose schema for the Todo collection
+// A schema is like a blueprint for documents in MongoDB
+const todoSchema = mongoose.Schema(
+  {
+    // 'title' field: required string
+    title: { type: String, required: true },
+
+    // 'desc' field: optional string for the description
+    desc: String,
+  },
+  {
+    // Enable timestamps: automatically add 'createdAt' and 'updatedAt' fields
+    timestamps: true,
+  }
+);
+
+// Create a Mongoose model based on the schema
+// A model represents a collection in MongoDB and allows you to interact with it
+const Todo = mongoose.model("Todo", todoSchema);
+
 // Set the view engine to 'ejs'
 // EJS (Embedded JavaScript) allows you to create dynamic HTML pages
 // Example: You can send data from your server and display it in HTML easily.
