@@ -12,6 +12,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const { title } = require("process");
 
+// Import body-parser middleware
+// Body-parser allows your Express app to read form data sent in HTTP requests (like POST requests)
+// It parses incoming request bodies and makes the data available under 'req.body'
+const bodyParser = require("body-parser");
+
 // Define the port number where the server will run
 // You can access your app in the browser at http://localhost:8000
 const PORT = 8000;
@@ -62,6 +67,11 @@ app.set("view engine", "ejs");
 // Any file inside 'public' can be accessed directly from the browser
 // Example: public/css/style.css can be used in HTML as <link rel="stylesheet" href="css/style.css">
 app.use(express.static(path.join(__dirname, "public")));
+
+// Use body-parser middleware to parse incoming form data
+// This allows Express to read data sent via POST requests from HTML forms
+// 'extended: true' allows parsing nested objects in the form data
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define a route for the home page "/"
 // When a user visits http://localhost:8000/, this function runs
@@ -122,6 +132,38 @@ app.get("/delete-todo", (req, res, next) => {
     res.render("deleteTodo", { title: "Delete Todo" });
   } catch (err) {
     // Handle any error that occurs while rendering the page
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// ---------------------- POST /add-todo ----------------------
+// Route: POST /add-todo
+// Purpose: Handle the form submission for adding a new Todo
+// This route receives data from the Add Todo form and saves it to MongoDB
+app.post("/add-todo", async (req, res, next) => {
+  try {
+    // Destructure 'title' and 'desc' from the form data sent in the request body
+    const { title, desc } = req.body;
+
+    // Basic validation: check if the title is provided
+    // If not, send a 400 Bad Request response with an error message
+    if (!title) {
+      return res.status(400).json({ message: "Title is Required" });
+    }
+
+    // Create a new Todo document using the Todo model
+    // This creates a new object in memory but does not save it yet
+    const newTodo = new Todo({ title, desc });
+
+    // Save the new Todo to the MongoDB database
+    await newTodo.save();
+
+    // After saving, redirect the user back to the home page ("/")
+    // This allows them to see the updated list with the new Todo
+    res.redirect("/");
+  } catch (err) {
+    // If any error occurs during the process, send a 500 Internal Server Error response
+    // Include the error message for debugging
     res.status(500).json({ message: err.message });
   }
 });
