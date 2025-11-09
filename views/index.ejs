@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo app</title>
+<!-- Include the header partial file -->
+<!-- 
+  This line imports shared HTML code (like <head>, <link>, or navigation bar)
+  from the file:  views/partials/header.ejs
+  It helps you avoid repeating the same header code in every page.
+-->
+<%- include("partials/header") %>
 
-    <!-- Link to external CSS file for styling -->
-    <!-- This file is in 'public/css/style.css' because Express serves the 'public' folder as static -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
     <!-- Container for the heading and Add Todo button -->
     <div class="table-container">
       <!-- Page title -->
@@ -42,6 +38,12 @@
         <a class="btn" href="/update-todo">Edit</a>
         <a class="btn" href="/delete-todo">Delete</a>
       </td>
-    </table>
-  </body>
-</html>
+    </table>  
+
+<!-- Include the footer partial file -->
+<!-- 
+  This imports shared HTML code for the page footer (like closing tags, scripts, etc.)
+  from the file:  views/partials/footer.ejs
+  It keeps your code organized and reusable across multiple pages.
+-->
+<%- include("partials/footer") %>
