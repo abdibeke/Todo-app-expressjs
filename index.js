@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 // Import path module
 // 'path' helps work with file paths in a way that works across all operating systems
 const path = require("path");
+const { title } = require("process");
 
 // Define the port number where the server will run
 // You can access your app in the browser at http://localhost:8000
@@ -45,7 +46,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res, next) => {
   try {
     // Render the 'index.ejs' file located in the 'views' folder
-    res.render("index");
+    // Pass 'title' to the template for a dynamic page title
+    res.render("index", { title: "List Todo" });
   } catch (err) {
     // If something goes wrong, return a JSON response with the error message
     res.status(500).json({ message: err.message });
@@ -62,7 +64,8 @@ app.get("/add-todo", (req, res, next) => {
   try {
     // Render the 'newTodo.ejs' file (create this inside your 'views' folder)
     // This page will contain a form for adding a new Todo
-    res.render("newTodo");
+    // Dynamic title for the Add Todo page
+    res.render("newTodo", { title: "New Todo" });
   } catch (err) {
     // Handle any error that occurs while rendering the page
     res.status(500).json({ message: err.message });
@@ -77,7 +80,8 @@ app.get("/add-todo", (req, res, next) => {
 app.get("/update-todo", (req, res, next) => {
   try {
     // Render the 'updateTodo.ejs' file (create this inside your 'views' folder)
-    res.render("updateTodo");
+    // Dynamic title for the Update Todo page
+    res.render("updateTodo", { title: "Update Todo" });
   } catch (err) {
     // Handle any error that occurs while rendering the page
     res.status(500).json({ message: err.message });
@@ -92,7 +96,8 @@ app.get("/update-todo", (req, res, next) => {
 app.get("/delete-todo", (req, res, next) => {
   try {
     // Render the 'deleteTodo.ejs' file (create this inside your 'views' folder)
-    res.render("deleteTodo");
+    // Dynamic title for the Delete Todo page
+    res.render("deleteTodo", { title: "Delete Todo" });
   } catch (err) {
     // Handle any error that occurs while rendering the page
     res.status(500).json({ message: err.message });

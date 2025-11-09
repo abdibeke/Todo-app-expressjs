@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo app</title>
-
+    <!-- Dynamic page title -->
+    <!-- <%= title %> will be replaced by the value passed from the Express route -->
+    <!-- Example: res.render("index", { title: "List Todo" }) -->
+    <!-- The browser tab will then show "List Todo | Todo app" -->
+    <title><%= title %> | Todo app</title>
     <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="/css/style.css" />
   </head>
