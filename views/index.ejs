@@ -35,8 +35,8 @@
         <td><%= todos[i].desc %></td>
 
         <!-- Display creation and update timestamps -->
-        <td><%= todos[i].createdAt %></td>
-        <td><%= todos[i].updatedAt %></td>
+        <td><%= moment(todos[i].createdAt).format("MMM DD, YYYY, HH:mm:ss") %></td>
+        <td><%= moment(todos[i].updatedAt).format("MMM DD, YYYY, HH:mm:ss") %></td>
 
         <!-- Action buttons for editing and deleting todos -->
         <!-- Currently these links go to the respective form pages -->

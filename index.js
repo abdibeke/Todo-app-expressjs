@@ -17,6 +17,7 @@ const { title } = require("process");
 // It parses incoming request bodies and makes the data available under 'req.body'
 const bodyParser = require("body-parser");
 
+const moment = require("moment");
 // Define the port number where the server will run
 // You can access your app in the browser at http://localhost:8000
 const PORT = 8000;
@@ -82,6 +83,8 @@ app.get("/", async (req, res, next) => {
     // Fetch all todos from the MongoDB database
     // Sorted by creation date in descending order (newest first)
     const todos = await Todo.find({}).sort({ createdAt: -1 });
+
+    res.locals.moment = moment;
 
     // Render the 'index.ejs' file located in the 'views' folder
     // Pass 'title' for the page title and 'todos' array to dynamically display in the table
