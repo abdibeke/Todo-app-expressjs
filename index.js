@@ -73,15 +73,21 @@ app.use(express.static(path.join(__dirname, "public")));
 // 'extended: true' allows parsing nested objects in the form data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Define a route for the home page "/"
-// When a user visits http://localhost:8000/, this function runs
-app.get("/", (req, res, next) => {
+// ---------------------- HOME PAGE ROUTE ----------------------
+// Route: GET /
+// Purpose: Display the list of all Todo items on the home page
+// When a user visits http://localhost:8000/, this route is executed
+app.get("/", async (req, res, next) => {
   try {
+    // Fetch all todos from the MongoDB database
+    // Sorted by creation date in descending order (newest first)
+    const todos = await Todo.find({}).sort({ createdAt: -1 });
+
     // Render the 'index.ejs' file located in the 'views' folder
-    // Pass 'title' to the template for a dynamic page title
-    res.render("index", { title: "List Todo" });
+    // Pass 'title' for the page title and 'todos' array to dynamically display in the table
+    res.render("index", { title: "List Todo", todos: todos });
   } catch (err) {
-    // If something goes wrong, return a JSON response with the error message
+    // If an error occurs while fetching data, respond with a 500 status and error message in JSON format
     res.status(500).json({ message: err.message });
   }
 });

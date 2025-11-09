@@ -27,18 +27,26 @@
         <th>Updated at</th>
         <th>Action</th>
       </tr>
+    <!-- Loop through all Todo items passed from the server -->
+    <% for(let i = 0; i < todos.length; i++) { %>
+      <tr>
+        <!-- Display each todo's title and description -->
+        <td><%= todos[i].title %></td>
+        <td><%= todos[i].desc %></td>
 
-      <!-- Example row: In the future, this will be dynamically filled with data from MongoDB -->
-      <td>Test todo Title</td>
-      <td>Test todo Description</td>
-      <td>Created time</td>
-      <td>Updated time</td>
-      <td>
-        <!-- Action buttons -->
-        <a class="btn" href="/update-todo">Edit</a>
-        <a class="btn" href="/delete-todo">Delete</a>
-      </td>
-    </table>  
+        <!-- Display creation and update timestamps -->
+        <td><%= todos[i].createdAt %></td>
+        <td><%= todos[i].updatedAt %></td>
+
+        <!-- Action buttons for editing and deleting todos -->
+        <!-- Currently these links go to the respective form pages -->
+        <td>
+          <a class="btn" href="/update-todo">Edit</a>
+          <a class="btn" href="/delete-todo">Delete</a>
+        </td>
+      </tr>
+    <% } %>
+  </table> 
 
 <!-- Include the footer partial file -->
 <!-- 
