@@ -18,6 +18,13 @@ const connectMongodb = require("./init/mongodb");
 // Contains all the routes related to Todo operations (add, list, update, delete)
 const todoRoute = require("./routes/todo");
 
+// Import dotenv for environment variables
+// Allows storing sensitive info like DB URLs in a .env file
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config();
+
 // Initialize Express application
 // The 'app' variable represents your entire web application
 const app = express();

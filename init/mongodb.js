@@ -2,17 +2,12 @@
 // Mongoose helps connect and interact with MongoDB databases easily
 const mongoose = require("mongoose");
 
-// MongoDB connection URL
-// Format: mongodb://<host>:<port>/<database-name>
-// Here, we connect to a local MongoDB instance with a database named 'todoDb'
-const connectionUrl = "mongodb://localhost:27017/todoDb";
-
 // Function to connect to MongoDB
 // Using 'async/await' to handle the asynchronous database connection
 const connectMongodb = async () => {
   try {
-    // Attempt to connect to MongoDB
-    await mongoose.connect(connectionUrl);
+    // Attempt to connect to MongoDB using the connection URL from environment variables
+    await mongoose.connect(process.env.CONNECTION_URL);
     console.log("🟢 Database connection successful");
   } catch (err) {
     // If connection fails, log the error message
