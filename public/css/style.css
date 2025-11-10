@@ -1,11 +1,7 @@
 /* ---------------------- GENERAL STYLES ---------------------- */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(
-    135deg,
-    #fffaf0,
-    #fff5e6
-  ); /* soft warm gradient */
+  background: linear-gradient(135deg, #fffaf0, #fff5e6);
   margin: 0;
   padding: 0;
   color: #333;
@@ -13,9 +9,9 @@ body {
 
 /* Headings */
 h2 {
-  color: #b8860b; /* golden color */
+  color: #b8860b;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-weight: 800;
   letter-spacing: 1px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -23,30 +19,25 @@ h2 {
 
 /* ---------------------- CONTAINER ---------------------- */
 .table-container {
-  max-width: 900px;
-  margin: 60px auto;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.95
-  ); /* semi-transparent for blur effect */
-  padding: 40px 50px;
+  max-width: 850px;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
   border-radius: 20px;
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
   backdrop-filter: blur(10px);
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .table-container:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* ---------------------- BUTTONS ---------------------- */
 .btn {
   display: inline-block;
-  padding: 12px 22px;
+  padding: 10px 18px;
   margin: 5px 5px 5px 0;
   font-weight: 600;
   border-radius: 12px;
@@ -55,8 +46,8 @@ h2 {
   transition: all 0.3s ease;
   border: none;
   text-align: center;
-  font-size: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Add / Save Button */
@@ -68,7 +59,7 @@ h2 {
 .btn-add:hover,
 .btn-save:hover {
   background: linear-gradient(135deg, #e6c200, #cca500);
-  box-shadow: 0 8px 20px rgba(230, 194, 0, 0.4);
+  box-shadow: 0 6px 18px rgba(230, 194, 0, 0.4);
   transform: translateY(-2px);
 }
 
@@ -83,16 +74,16 @@ h2 {
   transform: translateY(-2px);
 }
 
-/* Delete Button - Danger Style */
+/* Delete Button */
 .btn-delete {
   background: linear-gradient(135deg, #dc3545, #c82333);
   color: #fff;
-  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
   border: 1px solid #b52a37;
 }
 .btn-delete:hover {
   background: linear-gradient(135deg, #c82333, #a71d2a);
-  box-shadow: 0 8px 20px rgba(200, 35, 51, 0.4);
+  box-shadow: 0 6px 18px rgba(200, 35, 51, 0.4);
   transform: translateY(-2px);
 }
 
@@ -101,14 +92,14 @@ h2 {
 .btn-no {
   background: linear-gradient(135deg, #6c757d, #5a6268);
   color: #fff;
-  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
   border: 1px solid #4e545a;
   font-weight: 500;
 }
 .btn-back:hover,
 .btn-no:hover {
   background: linear-gradient(135deg, #5a6268, #484e53);
-  box-shadow: 0 8px 20px rgba(90, 98, 104, 0.4);
+  box-shadow: 0 6px 18px rgba(90, 98, 104, 0.4);
   transform: translateY(-2px);
 }
 
@@ -131,34 +122,42 @@ h2 {
 
 /* ---------------------- TABLE STYLING ---------------------- */
 table {
-  width: calc(100% - 60px);
-  margin: 30px auto;
+  width: 90%;
+  margin: 20px auto;
   border-collapse: collapse;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
 table th,
 table td {
-  padding: 16px 22px;
+  padding: 10px 14px;
   text-align: left;
 }
 
 table th {
   background: linear-gradient(135deg, #ffd700, #e6c200);
   color: #333;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 table tr:nth-child(even) {
-  background-color: #fff8dc; /* light cream row */
+  background-color: #fff8dc;
 }
 
 table tr:hover {
-  background-color: #fff0b3; /* soft golden hover */
+  background-color: #fff0b3;
   transition: 0.3s;
+}
+
+/* Action buttons inside table */
+table td a.btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
 }
 
 /* ---------------------- FORM ELEMENTS ---------------------- */
@@ -179,13 +178,13 @@ form:hover {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 label {
   display: block;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #b8860b;
   letter-spacing: 0.5px;
 }
@@ -193,8 +192,8 @@ label {
 input[type="text"],
 textarea {
   width: 100%;
-  padding: 12px 15px;
-  font-size: 16px;
+  padding: 10px 12px;
+  font-size: 15px;
   border-radius: 10px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -205,15 +204,15 @@ textarea {
 input[type="text"]:focus,
 textarea:focus {
   border-color: #ffd700;
-  box-shadow: 0 0 12px #ffd70044;
+  box-shadow: 0 0 10px #ffd70044;
   outline: none;
 }
 
 /* ---------------------- TODO TITLE ---------------------- */
 .todo-title {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 800;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   text-align: center;
   color: #b8860b;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
@@ -222,7 +221,7 @@ textarea:focus {
 /* ---------------------- CONFIRMATION ---------------------- */
 .confirm p {
   font-size: 18px;
-  margin-top: 25px;
+  margin-top: 20px;
   text-align: center;
   font-weight: 500;
 }
@@ -230,28 +229,28 @@ textarea:focus {
 /* ---------------------- RESPONSIVE ---------------------- */
 @media (max-width: 650px) {
   .table-container {
-    padding: 25px;
+    padding: 20px;
   }
 
   input[type="text"],
   textarea {
     font-size: 14px;
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
 
   table th,
   table td {
-    padding: 10px 12px;
-    font-size: 14px;
+    padding: 8px 10px;
+    font-size: 12px;
   }
 
   .todo-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   button.btn {
-    font-size: 14px;
-    padding: 10px 14px;
+    font-size: 12px;
+    padding: 8px 12px;
   }
 
   form {

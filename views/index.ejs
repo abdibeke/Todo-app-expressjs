@@ -13,7 +13,7 @@
 
       <!-- Button for adding a new todo -->
 
-      <a class="btn" href="/add-todo">Add Todo</a>
+      <a class="btn btn-add" href="/add-todo">Add Todo</a>
     </div>
     <br />
 
@@ -44,8 +44,8 @@
         (The delete page will ask for confirmation before removing the todo)
         -->
         <td>
-          <a class="btn" href="/update-todo?id=<%= todos[i]._id %>">Edit</a>
-          <a class="btn" href="/delete-todo?id=<%= todos[i]._id %>">Delete</a>
+          <a class="btn btn-update" href="/update-todo?id=<%= todos[i]._id %>">Edit</a>
+          <a class="btn btn-delete" href="/delete-todo?id=<%= todos[i]._id %>">Delete</a>
         </td>
       </tr>
     <% } %>
