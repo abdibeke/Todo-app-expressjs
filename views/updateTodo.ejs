@@ -16,11 +16,13 @@
         <a class="btn" href="/">Back</a>
 
         <!-- 
-          Update Todo form 
-          This form allows the user to edit an existing Todo item.
-          You can fill in the existing title and description values to be updated.
+          Update Todo form
+          Allows the user to edit and update an existing Todo item.
+          The form uses POST method to send updated data to the server.
+          The action URL includes the Todo ID to specify which item to update.
+          Example: /update-todo/672a1c... (MongoDB _id)
         -->
-        <form action="" method="">
+        <form action="/update-todo/<%= todo._id %>" method="post">
           <div class="update-todo">
             <!-- Title input field -->
             <div class="form-group">
@@ -28,7 +30,7 @@
               <input
                 type="text"
                 name="title"
-                value=""
+                value="<%= todo.title %>" 
                 placeholder="Type todo here"
               />
 
@@ -38,7 +40,7 @@
                 <input
                   type="text"
                   name="desc"
-                  value=""
+                  value="<%= todo.desc %>"
                   placeholder="Type description here"
                 />
               </div>

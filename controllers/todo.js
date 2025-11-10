@@ -40,10 +40,14 @@ const addTodoFormController = (req, res, next) => {
 
 // ---------------------- UPDATE TODO FORM CONTROLLER ----------------------
 // Controller for displaying the "Update Todo" page
-const updateTodoFormController = (req, res, next) => {
+const updateTodoFormController = async (req, res, next) => {
   try {
+    // Extract the Todo ID from the query string (?id=...)
+    const { id } = req.query;
+    // Fetch the specific Todo document from MongoDB
+    const todo = await Todo.findById(id);
     // Render 'updateTodo.ejs' template with dynamic page title
-    res.render("updateTodo", { title: "Update Todo" });
+    res.render("updateTodo", { title: "Update Todo", todo });
   } catch (err) {
     // Handle rendering errors
     res.status(500).json({ message: err.message });
@@ -88,6 +92,34 @@ const addTodoController = async (req, res, next) => {
   }
 };
 
+// ---------------------- UPDATE TODO CONTROLLER ----------------------
+// Handles the form submission for updating an existing Todo
+const updateTodoController = async (req, res, next) => {
+  try {
+    // Extract ID from URL params and updated data from the request body
+    const { id } = req.params;
+    const { title, desc } = req.body;
+
+    // Find the Todo by ID
+    const todo = await Todo.findById(id);
+    if (!todo) {
+      return res.status(404).json({ message: "Todo not found" });
+    }
+
+    // Update fields
+    todo.title = title;
+    todo.desc = desc;
+
+    // Save the updated Todo document
+    await todo.save();
+
+    // Redirect back to home page after update
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // Export all controller functions for use in routes
 module.exports = {
   homeController,
@@ -95,4 +127,5 @@ module.exports = {
   updateTodoFormController,
   deleteTodoPageController,
   addTodoController,
+  updateTodoController,
 };

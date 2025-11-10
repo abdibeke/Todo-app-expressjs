@@ -43,5 +43,11 @@ router.get("/delete-todo", todo.deleteTodoPageController);
 // This receives form data and saves a new Todo item into MongoDB
 router.post("/add-todo", todo.addTodoController);
 
+// ---------------------- UPDATE TODO (POST) ROUTE ----------------------
+// Route: POST /update-todo/:id
+// Purpose: Handle form submission for updating an existing Todo
+// The ':id' is a route parameter that identifies which Todo to update
+router.post("/update-todo/:id", todo.updateTodoController);
+
 // Export the router so it can be used in other files (like app.js)
 module.exports = router;
