@@ -49,5 +49,11 @@ router.post("/add-todo", todo.addTodoController);
 // The ':id' is a route parameter that identifies which Todo to update
 router.post("/update-todo/:id", todo.updateTodoController);
 
+// ---------------------- DELETE TODO (CONFIRM) ROUTE ----------------------
+// Route: GET /confirm-delete
+// Purpose: Handle the deletion of a Todo item after user confirmation
+// The query parameters are: ?id=123&confirm=yes
+router.get("/confirm-delete", todo.deleteTodoController);
+
 // Export the router so it can be used in other files (like app.js)
 module.exports = router;

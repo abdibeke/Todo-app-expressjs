@@ -40,11 +40,12 @@
 
         <!-- 
         Edit button → links to /update-todo page, passing the todo's unique ID in the URL.
-        Delete button → links to /delete-todo route (can later be changed to a form POST for security).
+        Delete button → navigates to /delete-todo page with the todo's ID in query string
+        (The delete page will ask for confirmation before removing the todo)
         -->
         <td>
           <a class="btn" href="/update-todo?id=<%= todos[i]._id %>">Edit</a>
-          <a class="btn" href="/delete-todo">Delete</a>
+          <a class="btn" href="/delete-todo?id=<%= todos[i]._id %>">Delete</a>
         </td>
       </tr>
     <% } %>

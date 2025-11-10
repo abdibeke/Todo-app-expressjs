@@ -19,10 +19,11 @@
       <div class="confirm">
         <p>
           Are you sure you want to delete this todo?
-          <!-- 'Yes' button will trigger the delete action -->
-          <a class="btn" href="">Yes</a>
-          <!-- 'No' button will cancel the deletion and go back -->
-          <a class="btn" href="/">No</a>
+          <!-- 'Yes' button triggers the delete action -->
+          <!-- Sends query parameters: id=<todoId>&confirm=yes -->
+          <a class="btn" href="/confirm-delete?id=<%= id %>&confirm=yes">Yes</a>
+          <!-- 'No' button cancels deletion and redirects back to home -->
+          <a class="btn" href="/confirm-delete?id=<%= id %>&confirm=no">No</a>
         </p>
       </div>
     </div> 

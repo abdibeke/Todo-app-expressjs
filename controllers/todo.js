@@ -58,8 +58,10 @@ const updateTodoFormController = async (req, res, next) => {
 // Controller for displaying the "Delete Todo" page
 const deleteTodoPageController = (req, res, next) => {
   try {
+    // Get the ID of the Todo to potentially delete
+    const { id } = req.query;
     // Render 'deleteTodo.ejs' template with dynamic page title
-    res.render("deleteTodo", { title: "Delete Todo" });
+    res.render("deleteTodo", { title: "Delete Todo", id });
   } catch (err) {
     // Handle rendering errors
     res.status(500).json({ message: err.message });
@@ -120,6 +122,24 @@ const updateTodoController = async (req, res, next) => {
   }
 };
 
+// ---------------------- DELETE TODO CONTROLLER ----------------------
+// Handles the deletion of a Todo item
+const deleteTodoController = async (req, res, next) => {
+  try {
+    const { id, confirm } = req.query;
+
+    // Delete only if the user confirmed the action
+    if (confirm === "yes") {
+      await Todo.findByIdAndDelete(id);
+    }
+
+    // Redirect to home page after deletion
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 // Export all controller functions for use in routes
 module.exports = {
   homeController,
@@ -128,4 +148,5 @@ module.exports = {
   deleteTodoPageController,
   addTodoController,
   updateTodoController,
+  deleteTodoController,
 };
